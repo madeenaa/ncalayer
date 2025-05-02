@@ -38,24 +38,6 @@ http://127.0.0.1:8000/admin/
 
 ⸻
 
-## 🧩 Project Structure
-
-ncalayer/
-├── manage.py
-├── project/        # Django settings, URLs, WSGI/ASGI
-├── app/            # App logic
-├── documents/      # Document upload and approval logic
-├── ncalogin/       # EDS-based login via NCALayer
-├── users/          # Custom user models and roles
-├── templates/      # HTML templates
-├── static/         # JS, CSS, etc.
-├── media/          # Uploaded files
-└── venv/           # Virtual environment (excluded in .gitignore)
-
-
-
-⸻
-
 ## ⚙️ Requirements
 	•	Python 3.10+
 	•	Django 5.1
