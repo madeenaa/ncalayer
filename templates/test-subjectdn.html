@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>NCALayer SubjectDN Test</title>
+</head>
+<body style="font-family: sans-serif; padding: 2rem;">
+  <h2>🧪 Проверка subjectDN от NCALayer</h2>
+  <button onclick="getSubjectDN()">📥 Получить subjectDN</button>
+
+  <pre id="output" style="background:#eee; padding:1rem; margin-top:1rem;"></pre>
+
+  <script>
+    function getSubjectDN() {
+      const output = document.getElementById("output");
+      const socket = new WebSocket("wss://127.0.0.1:13579/");
+
+      socket.onopen = () => {
+        const request = {
+          module: "kz.gov.pki.knca.commonUtils",
+          method: "getSubjectDN",
+          args: []
+        };
+        socket.send(JSON.stringify(request));
+        output.textContent = "🔄 Отправлен запрос к NCALayer...";
+      };
+
+      socket.onmessage = (event) => {
+        const result = JSON.parse(event.data);
+        console.log("📥 Ответ от NCALayer:", result);
+        if (result.code === "200" && result.responseObject?.subjectDn) {
+          output.textContent = "✅ subjectDN:\n" + result.responseObject.subjectDn;
+        } else {
+          output.textContent = "❌ Ошибка: " + (result.message || "subjectDN не получен");
+        }
+      };
+
+      socket.onerror = () => {
+        output.textContent = "❌ Ошибка подключения к NCALayer";
+      };
+    }
+  </script>
+</body>
+</html>

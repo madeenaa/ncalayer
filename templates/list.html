@@ -1,0 +1,23 @@
+{extends "base.html" %}
+{% if user.is_authenticated %}
+<h2>{{ message }}</h2>
+
+    {% if documents %}
+        <h3>All documents:</h3>
+        <ul>
+            {% for document in documents %}
+                <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No documents yet.</p>
+    {% endif %}
+
+    <form action="{% url 'my-view' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <p>{{ form.docfile.label_tag }} {{ form.docfile }}</p>
+        <p>{{ form.docfile.errors }}</p>
+        <input type="submit" value="Upload">
+    </form>
+    {% endif %}

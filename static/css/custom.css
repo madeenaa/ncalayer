@@ -1,0 +1,40 @@
+h1{
+    color: #4CAF50; /* Green */
+    text-align: center;
+    font-size: 30px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1e1e1e;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .welcome {
+    text-align: center;
+  }
+  
+  .highlight {
+    color: #00ff88;
+    font-weight: bold;
+  }
+  
+  .profile-cube {
+    margin: 30px auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, #B3A7F5, #6C61DF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
